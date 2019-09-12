@@ -77,20 +77,16 @@ var _default = function _default() {
       setElements = _useState4[1];
 
   var add = function add(type) {
-    if ("textfield" === type) {
-      var newElements = _toConsumableArray(elements);
-
-      newElements.push({
-        type: type,
-        value: "",
-        id: "",
-        name: "",
-        label: "",
-        placeholder: ""
-      });
-      setElements(newElements);
-      setCurrent(newElements.length - 1);
-    }
+    var newElements = [].concat(_toConsumableArray(elements), [{
+      type: type,
+      value: "",
+      id: "",
+      name: "",
+      label: "",
+      placeholder: ""
+    }]);
+    setElements(newElements);
+    setCurrent(newElements.length - 1);
   };
 
   var save = function save(data) {
@@ -99,7 +95,9 @@ var _default = function _default() {
 
   return _react["default"].createElement(_reactstrap.Container, null, _react["default"].createElement(_reactstrap.Row, null, _react["default"].createElement(_reactstrap.Col, null, _react["default"].createElement(_reactstrap.Button, {
     onClick: add.bind(null, "textfield")
-  }, "TextField"))), _react["default"].createElement(_reactstrap.Row, null, _react["default"].createElement(_reactstrap.Col, {
+  }, "TextField"), _react["default"].createElement(_reactstrap.Button, {
+    onClick: add.bind(null, "select")
+  }, "Select"))), _react["default"].createElement(_reactstrap.Row, null, _react["default"].createElement(_reactstrap.Col, {
     sm: 6
   }, _react["default"].createElement("h1", null, "Items"), elements[current] && _react["default"].createElement(Build, {
     elements: elements,

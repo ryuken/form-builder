@@ -2,7 +2,7 @@ import React from "react"
 
 import resolve from "./resolve"
 
-export default ({ parent, id, attr, data, value, el, setFieldValue, errors }) => {
+export default ({ parent, attr, data, value, el, setFieldValue, errors }) => {
 
     const onChange = (e) => {
         setFieldValue(attr, e.target.value)
@@ -35,10 +35,11 @@ export default ({ parent, id, attr, data, value, el, setFieldValue, errors }) =>
         <FormElement
             key={el.name}
             parent={parent}
-            id={id}
             onChange={onChange}
             setFieldValue={setFieldValue}
             {...el}
+            id={attr}
+            name={attr}
             value={value}
             errors={errors}
         />

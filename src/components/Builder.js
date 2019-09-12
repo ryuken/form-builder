@@ -49,22 +49,17 @@ export default () => {
 
     const add = (type) => {
 
-        if("textfield" === type) {
-            
-            let newElements = [...elements]
+        let newElements = [...elements, {
+            type,
+            value: "",
+            id: "",
+            name: "",
+            label: "",
+            placeholder: ""
+        }]
 
-            newElements.push({
-                type,
-                value: "",
-                id: "",
-                name: "",
-                label: "",
-                placeholder: ""
-            })
-
-            setElements(newElements)
-            setCurrent(newElements.length - 1)
-        }
+        setElements(newElements)
+        setCurrent(newElements.length - 1)
     }
 
     const save = (data) => {
@@ -78,6 +73,9 @@ export default () => {
                 <Col>
                     <Button onClick={add.bind(null, "textfield")}>
                         TextField
+                    </Button>
+                    <Button onClick={add.bind(null, "select")}>
+                        Select
                     </Button>
                 </Col>
             </Row>

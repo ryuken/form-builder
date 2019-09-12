@@ -23,7 +23,6 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var _default = function _default(_ref) {
   var parent = _ref.parent,
-      id = _ref.id,
       attr = _ref.attr,
       data = _ref.data,
       value = _ref.value,
@@ -53,10 +52,11 @@ var _default = function _default(_ref) {
   return _react["default"].createElement(FormElement, _extends({
     key: el.name,
     parent: parent,
-    id: id,
     onChange: onChange,
     setFieldValue: setFieldValue
   }, el, {
+    id: attr,
+    name: attr,
     value: value,
     errors: errors
   }));

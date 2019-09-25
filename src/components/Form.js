@@ -1,85 +1,88 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Formik, Form } from "formik"
+import { withFormik } from "formik"
 import Validator from "validatorjs"
 import { Button } from "reactstrap"
 
 import FormElement from "./FormElement"
 
-const form = ({ elements, initialValues, onSubmit }) => {
-
+const MyForm = props => {
+    
+    const {
+      values,
+      errors,
+      setFieldValue,
+      handleSubmit,
+      isSubmitting
+    } = props;
     return (
-        <Formik
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            validate={(values) => {
-
-                let rules = elements.reduce(
-                    (acc, el) => {
-
-                        if(el.rule)
-                            acc[el.name] = el.rule
-
-                        if(el.options) {
-
-                            el.options.forEach(o => {
-
-                                if(o.rule)
-                                    acc[o.ruleName || o.name] = o.rule
-                            })
-                        }
-
-                        return acc
-                    },
-                    {}
-                )
-
-                let validation = new Validator(values, rules)
-
-                validation.passes()
-
-                return validation.errors.all()
-            }}
-            render={({
-                values,
-                errors,
-                isSubmitting,
-                handleSubmit,
-                setFieldValue
-            }) => (
-                <Form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
                     
-                    {elements.map(el => {
+            {props.elements.map(el => {
 
-                        return (
-                            <FormElement
-                                key={el.name}
-                                id={el.name}
-                                attr={el.name}
-                                data={values}
-                                value={values[el.name]}
-                                setFieldValue={setFieldValue}
-                                el={el}
-                                errors={errors}
-                            />
-                        )
-                    })}
+                return (
+                    <FormElement
+                        key={el.name}
+                        id={el.name}
+                        attr={el.name}
+                        data={values}
+                        value={values[el.name]}
+                        setFieldValue={setFieldValue}
+                        el={el}
+                        errors={errors}
+                    />
+                )
+            })}
 
-                    <Button
-                        id="save"
-                        type="submit"
-                        color="primary"
-                        onClick={handleSubmit}
-                        disabled={isSubmitting}
-                    >
-                        Save
-                    </Button>
+            <Button
+                id="save"
+                type="submit"
+                color="primary"
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+            >
+                Save
+            </Button>
 
-                </Form>
-            )}
-        />
+        </form>
     )
 }
+  
+const form = withFormik({
+    mapPropsToValues: ({ initialValues }) => (initialValues),
+  
+    // Custom sync validation
+    validate: (values, { elements }) => {
+
+        let rules = elements.reduce(
+            (acc, el) => {
+
+                if(el.rule)
+                    acc[el.name] = el.rule
+
+                if(el.options) {
+
+                    el.options.forEach(o => {
+
+                        if(o.rule)
+                            acc[o.ruleName || o.name] = o.rule
+                    })
+                }
+
+                return acc
+            },
+            {}
+        )
+
+        let validation = new Validator(values, rules)
+
+        validation.passes()
+
+        return validation.errors.all()
+    },
+  
+    handleSubmit: (values, formikBag) => formikBag.props.onSubmit(values, formikBag),
+})(MyForm)
 
 form.propTypes = {
     elements: PropTypes.array.isRequired,

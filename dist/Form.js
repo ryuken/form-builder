@@ -19,59 +19,61 @@ var _FormElement = _interopRequireDefault(require("./FormElement"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var form = function form(_ref) {
-  var elements = _ref.elements,
-      initialValues = _ref.initialValues,
-      onSubmit = _ref.onSubmit;
-  return _react["default"].createElement(_formik.Formik, {
-    initialValues: initialValues,
-    onSubmit: onSubmit,
-    validate: function validate(values) {
-      var rules = elements.reduce(function (acc, el) {
-        if (el.rule) acc[el.name] = el.rule;
-
-        if (el.options) {
-          el.options.forEach(function (o) {
-            if (o.rule) acc[o.ruleName || o.name] = o.rule;
-          });
-        }
-
-        return acc;
-      }, {});
-      var validation = new _validatorjs["default"](values, rules);
-      validation.passes();
-      return validation.errors.all();
-    },
-    render: function render(_ref2) {
-      var values = _ref2.values,
-          errors = _ref2.errors,
-          isSubmitting = _ref2.isSubmitting,
-          handleSubmit = _ref2.handleSubmit,
-          setFieldValue = _ref2.setFieldValue;
-      return _react["default"].createElement(_formik.Form, {
-        onSubmit: handleSubmit
-      }, elements.map(function (el) {
-        return _react["default"].createElement(_FormElement["default"], {
-          key: el.name,
-          id: el.name,
-          attr: el.name,
-          data: values,
-          value: values[el.name],
-          setFieldValue: setFieldValue,
-          el: el,
-          errors: errors
-        });
-      }), _react["default"].createElement(_reactstrap.Button, {
-        id: "save",
-        type: "submit",
-        color: "primary",
-        onClick: handleSubmit,
-        disabled: isSubmitting
-      }, "Save"));
-    }
-  });
+var MyForm = function MyForm(props) {
+  var values = props.values,
+      errors = props.errors,
+      setFieldValue = props.setFieldValue,
+      handleSubmit = props.handleSubmit,
+      isSubmitting = props.isSubmitting;
+  return _react["default"].createElement("form", {
+    onSubmit: handleSubmit
+  }, props.elements.map(function (el) {
+    return _react["default"].createElement(_FormElement["default"], {
+      key: el.name,
+      id: el.name,
+      attr: el.name,
+      data: values,
+      value: values[el.name],
+      setFieldValue: setFieldValue,
+      el: el,
+      errors: errors
+    });
+  }), _react["default"].createElement(_reactstrap.Button, {
+    id: "save",
+    type: "submit",
+    color: "primary",
+    onClick: handleSubmit,
+    disabled: isSubmitting
+  }, "Save"));
 };
 
+var form = (0, _formik.withFormik)({
+  mapPropsToValues: function mapPropsToValues(_ref) {
+    var initialValues = _ref.initialValues;
+    return initialValues;
+  },
+  // Custom sync validation
+  validate: function validate(values, _ref2) {
+    var elements = _ref2.elements;
+    var rules = elements.reduce(function (acc, el) {
+      if (el.rule) acc[el.name] = el.rule;
+
+      if (el.options) {
+        el.options.forEach(function (o) {
+          if (o.rule) acc[o.ruleName || o.name] = o.rule;
+        });
+      }
+
+      return acc;
+    }, {});
+    var validation = new _validatorjs["default"](values, rules);
+    validation.passes();
+    return validation.errors.all();
+  },
+  handleSubmit: function handleSubmit(values, formikBag) {
+    return formikBag.props.onSubmit(values, formikBag);
+  }
+})(MyForm);
 form.propTypes = {
   elements: _propTypes["default"].array.isRequired,
   onSubmit: _propTypes["default"].func.isRequired,

@@ -22,7 +22,9 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 var _default = function _default(_ref) {
-  var parent = _ref.parent,
+  var _ref$resolveAs = _ref.resolveAs,
+      resolveAs = _ref$resolveAs === void 0 ? "form" : _ref$resolveAs,
+      parent = _ref.parent,
       attr = _ref.attr,
       data = _ref.data,
       value = _ref.value,
@@ -34,7 +36,7 @@ var _default = function _default(_ref) {
     setFieldValue(attr, e.target.value);
   };
 
-  var FormElement = (0, _resolve["default"])("form", el.type);
+  var FormElement = (0, _resolve["default"])(resolveAs, el.type);
 
   if ("undefined" !== typeof el.condition) {
     var result = false;

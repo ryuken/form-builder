@@ -2,13 +2,13 @@ import React from "react"
 
 import resolve from "./resolve"
 
-export default ({ parent, attr, data, value, el, setFieldValue, errors }) => {
+export default ({ resolveAs="form",  parent, attr, data, value, el, setFieldValue, errors }) => {
 
     const onChange = (e) => {
         setFieldValue(attr, e.target.value)
     }
 
-    let FormElement = resolve("form", el.type)
+    let FormElement = resolve(resolveAs, el.type)
 
     if("undefined" !== typeof el.condition) {
 

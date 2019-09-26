@@ -25,6 +25,15 @@ var MyForm = function MyForm(props) {
       setFieldValue = props.setFieldValue,
       handleSubmit = props.handleSubmit,
       isSubmitting = props.isSubmitting;
+  var buttonProps = {
+    id: "save",
+    type: "submit",
+    onClick: handleSubmit,
+    disabled: isSubmitting
+  };
+  if (props.button.className) buttonProps.className = props.button.className;
+  if (props.button.style) buttonProps.style = props.button.style;
+  if (props.button.color) buttonProps.color = props.button.color;else buttonProps.color = "primary";
   return _react["default"].createElement("form", {
     onSubmit: handleSubmit
   }, props.elements.map(function (el) {
@@ -38,13 +47,7 @@ var MyForm = function MyForm(props) {
       el: el,
       errors: errors
     });
-  }), _react["default"].createElement(_reactstrap.Button, {
-    id: "save",
-    type: "submit",
-    color: "primary",
-    onClick: handleSubmit,
-    disabled: isSubmitting
-  }, "Save"));
+  }), _react["default"].createElement(_reactstrap.Button, buttonProps, props.button.label || "Save"));
 };
 
 var form = (0, _formik.withFormik)({

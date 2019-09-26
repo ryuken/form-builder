@@ -9,12 +9,30 @@ import FormElement from "./FormElement"
 const MyForm = props => {
     
     const {
-      values,
-      errors,
-      setFieldValue,
-      handleSubmit,
-      isSubmitting
-    } = props;
+        values,
+        errors,
+        setFieldValue,
+        handleSubmit,
+        isSubmitting
+    } = props
+
+    let buttonProps = {
+        id: "save",
+        type: "submit",
+        onClick: handleSubmit,
+        disabled: isSubmitting,
+    }
+
+    if(props.button.className)
+        buttonProps.className = props.button.className
+
+    if(props.button.style)
+        buttonProps.style = props.button.style
+    if(props.button.color)
+        buttonProps.color = props.button.color
+    else
+        buttonProps.color = "primary"
+
     return (
         <form onSubmit={handleSubmit}>
                     
@@ -34,14 +52,8 @@ const MyForm = props => {
                 )
             })}
 
-            <Button
-                id="save"
-                type="submit"
-                color="primary"
-                onClick={handleSubmit}
-                disabled={isSubmitting}
-            >
-                Save
+            <Button {...buttonProps}>
+                {props.button.label || "Save"}
             </Button>
 
         </form>

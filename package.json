@@ -1,5 +1,5 @@
 {
-  "name": "form-builder",
+  "name": "@ryuken/form-builder",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "formik": "^1.5.8",
     "lodash": "^4.17.15",
@@ -20,11 +20,11 @@
     "validatorjs": "^3.17.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.0",
-    "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
     "bootstrap": "^4.3.1",
-    "next": "^9.0.5"
+    "next": "^9.0.6"
   }
 }

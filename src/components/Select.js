@@ -6,7 +6,7 @@ import {
 } from "reactstrap"
 
 export default ({
-    name, id = name, label, options = [],
+    name, id = name, label, lableStyle, options = [],
     value = "", onChange, disabled = false, help, errors
 }) => {
 
@@ -20,7 +20,7 @@ export default ({
 
     return (
         <FormGroup>
-            <Label for={name}>{label}</Label>
+            <Label style={lableStyle} for={name}>{label}</Label>
             <Input type="select"
                 id={id} name={name}
                 disabled={disabled}

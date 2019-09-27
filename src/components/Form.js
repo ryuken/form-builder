@@ -23,15 +23,18 @@ const MyForm = props => {
         disabled: isSubmitting,
     }
 
-    if(props.button.className)
-        buttonProps.className = props.button.className
+    if(props.button) {
 
-    if(props.button.style)
-        buttonProps.style = props.button.style
-    if(props.button.color)
-        buttonProps.color = props.button.color
-    else
-        buttonProps.color = "primary"
+        if(props.button.className)
+            buttonProps.className = props.button.className
+
+        if(props.button.style)
+            buttonProps.style = props.button.style
+        if(props.button.color)
+            buttonProps.color = props.button.color
+        else
+            buttonProps.color = "primary"
+    }
 
     return (
         <form onSubmit={handleSubmit}>
@@ -48,6 +51,7 @@ const MyForm = props => {
                         setFieldValue={setFieldValue}
                         el={el}
                         errors={errors}
+                        labelStyle={props.labelStyle}
                     />
                 )
             })}

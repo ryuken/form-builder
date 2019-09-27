@@ -31,9 +31,13 @@ var MyForm = function MyForm(props) {
     onClick: handleSubmit,
     disabled: isSubmitting
   };
-  if (props.button.className) buttonProps.className = props.button.className;
-  if (props.button.style) buttonProps.style = props.button.style;
-  if (props.button.color) buttonProps.color = props.button.color;else buttonProps.color = "primary";
+
+  if (props.button) {
+    if (props.button.className) buttonProps.className = props.button.className;
+    if (props.button.style) buttonProps.style = props.button.style;
+    if (props.button.color) buttonProps.color = props.button.color;else buttonProps.color = "primary";
+  }
+
   return _react["default"].createElement("form", {
     onSubmit: handleSubmit
   }, props.elements.map(function (el) {
@@ -45,7 +49,8 @@ var MyForm = function MyForm(props) {
       value: values[el.name],
       setFieldValue: setFieldValue,
       el: el,
-      errors: errors
+      errors: errors,
+      labelStyle: props.labelStyle
     });
   }), _react["default"].createElement(_reactstrap.Button, buttonProps, props.button.label || "Save"));
 };

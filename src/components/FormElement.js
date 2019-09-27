@@ -2,7 +2,9 @@ import React from "react"
 
 import resolve from "./resolve"
 
-export default ({ resolveAs="form",  parent, attr, data, value, el, setFieldValue, errors }) => {
+export default (props) => {
+
+    const { resolveAs="form", parent, attr, data, value, el, setFieldValue, errors } = props
 
     const onChange = (e) => {
         setFieldValue(attr, e.target.value)
@@ -40,6 +42,7 @@ export default ({ resolveAs="form",  parent, attr, data, value, el, setFieldValu
             {...el}
             id={attr}
             name={attr}
+            labelStyle={props.labelStyle}
             value={value}
             errors={errors}
         />

@@ -16,6 +16,7 @@ var _default = function _default(_ref) {
       _ref$id = _ref.id,
       id = _ref$id === void 0 ? name : _ref$id,
       label = _ref.label,
+      lableStyle = _ref.lableStyle,
       placeholder = _ref.placeholder,
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? "text" : _ref$type,
@@ -37,6 +38,7 @@ var _default = function _default(_ref) {
   }
 
   return _react["default"].createElement(_reactstrap.FormGroup, null, _react["default"].createElement(_reactstrap.Label, {
+    style: lableStyle,
     "for": name
   }, label), _react["default"].createElement(_reactstrap.Input, {
     type: type,
@@ -56,8 +58,6 @@ var TextFieldBuilder = function TextFieldBuilder(_ref2) {
   var id = _ref2.id,
       name = _ref2.name,
       label = _ref2.label,
-      _ref2$value = _ref2.value,
-      value = _ref2$value === void 0 ? "" : _ref2$value,
       placeholder = _ref2.placeholder,
       onChange = _ref2.onChange;
   return _react["default"].createElement(_reactstrap.Container, null, _react["default"].createElement(_reactstrap.FormGroup, null, _react["default"].createElement(_reactstrap.Label, {

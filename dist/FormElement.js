@@ -44,6 +44,8 @@ var _default = function _default(props) {
 
     if (el.condition.operator === "equal") {
       if (val === el.condition.data) result = true;
+    } else if (el.condition.operator === "not") {
+      if (val !== el.condition.data) result = true;
     } else if (el.condition.operator === "in") {
       if (_toConsumableArray(JSON.parse(el.condition.data)).includes(val)) result = true;
     }

@@ -23,6 +23,11 @@ export default (props) => {
             if(val === el.condition.data)
                 result = true
         }
+        else if(el.condition.operator === "not") {
+
+            if(val !== el.condition.data)
+                result = true
+        }
         else if(el.condition.operator === "in") {
 
             if([...JSON.parse(el.condition.data)].includes(val))

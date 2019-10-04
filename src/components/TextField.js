@@ -5,7 +5,7 @@ import {
 } from "reactstrap"
 
 export default ({
-    name, id = name, label, lableStyle, placeholder, type = "text",
+    name, id = name, label, labelStyle, placeholder, type = "text",
     value = "", onChange, disabled = false, help, errors = []
 }) => {
 
@@ -19,7 +19,7 @@ export default ({
 
     return (
         <FormGroup>
-            <Label style={lableStyle} for={name}>{label}</Label>
+            <Label style={labelStyle} for={name}>{label}</Label>
             <Input type={type}
                 id={id} name={name}
                 placeholder={placeholder}

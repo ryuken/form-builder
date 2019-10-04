@@ -16,7 +16,7 @@ var _default = function _default(_ref) {
       _ref$id = _ref.id,
       id = _ref$id === void 0 ? name : _ref$id,
       label = _ref.label,
-      lableStyle = _ref.lableStyle,
+      labelStyle = _ref.labelStyle,
       placeholder = _ref.placeholder,
       _ref$type = _ref.type,
       type = _ref$type === void 0 ? "text" : _ref$type,
@@ -38,7 +38,7 @@ var _default = function _default(_ref) {
   }
 
   return _react["default"].createElement(_reactstrap.FormGroup, null, _react["default"].createElement(_reactstrap.Label, {
-    style: lableStyle,
+    style: labelStyle,
     "for": name
   }, label), _react["default"].createElement(_reactstrap.Input, {
     type: type,

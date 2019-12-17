@@ -9,7 +9,7 @@ import FormElement from "./FormElement"
 const MyForm = props => {
     
     const {
-        values,
+        values = {},
         errors,
         setFieldValue,
         handleSubmit,
@@ -57,7 +57,7 @@ const MyForm = props => {
             })}
 
             <Button {...buttonProps}>
-                {props.button.label || "Save"}
+                {props.button && props.button.label || "Save"}
             </Button>
 
         </form>
@@ -65,7 +65,7 @@ const MyForm = props => {
 }
   
 const form = withFormik({
-    mapPropsToValues: ({ initialValues }) => (initialValues),
+    mapPropsToValues: ({ initialValues = {} }) => (initialValues),
   
     // Custom sync validation
     validate: (values, { elements }) => {

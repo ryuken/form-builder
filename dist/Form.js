@@ -20,7 +20,8 @@ var _FormElement = _interopRequireDefault(require("./FormElement"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var MyForm = function MyForm(props) {
-  var values = props.values,
+  var _props$values = props.values,
+      values = _props$values === void 0 ? {} : _props$values,
       errors = props.errors,
       setFieldValue = props.setFieldValue,
       handleSubmit = props.handleSubmit,
@@ -52,12 +53,13 @@ var MyForm = function MyForm(props) {
       errors: errors,
       labelStyle: props.labelStyle
     });
-  }), _react["default"].createElement(_reactstrap.Button, buttonProps, props.button.label || "Save"));
+  }), _react["default"].createElement(_reactstrap.Button, buttonProps, props.button && props.button.label || "Save"));
 };
 
 var form = (0, _formik.withFormik)({
   mapPropsToValues: function mapPropsToValues(_ref) {
-    var initialValues = _ref.initialValues;
+    var _ref$initialValues = _ref.initialValues,
+        initialValues = _ref$initialValues === void 0 ? {} : _ref$initialValues;
     return initialValues;
   },
   // Custom sync validation

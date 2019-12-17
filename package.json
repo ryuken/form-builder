@@ -11,20 +11,24 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "formik": "^1.5.8",
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
+    "formik": "^2.0.8",
     "lodash": "^4.17.15",
+    "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "reactstrap": "^8.0.1",
-    "validatorjs": "^3.17.1"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-sortable-tree": "^2.7.1",
+    "reactstrap": "^8.2.0",
+    "validatorjs": "^3.18.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.2",
-    "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
-    "@babel/preset-react": "^7.0.0",
-    "bootstrap": "^4.3.1",
-    "next": "^9.0.6"
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "bootstrap": "^4.4.1",
+    "next": "^9.1.6"
   }
 }

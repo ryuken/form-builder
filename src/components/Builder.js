@@ -1,9 +1,15 @@
 import React, { useState } from "react"
+import dynamic from "next/dynamic"
 
 import {
     Container, Row, Col,
     Button
 } from "reactstrap"
+
+import 'react-sortable-tree/style.css'
+
+const SortableTree = dynamic(import("react-sortable-tree"), { ssr: false})
+
 
 import resolve from "./resolve"
 import Form from "./Form"
@@ -82,15 +88,20 @@ export default () => {
 
             <Row>
                 <Col sm={6}>
-                    <h1>Items</h1>
-
-                    {elements[current] && (
-                        <Build
-                            elements={elements}
-                            setElements={setElements}
-                            current={current}
+                    <div style={{ height: 400 }}>
+                        <SortableTree
+                            treeData={elements}
+                            onChange={treeData => setElements(treeData)}
+                            generateNodeProps={node => {
+                                return {
+                                    id:node.node.id,
+                                    onClick: (e) => handleNodeClick(node, e),
+                                    // **** This is where the actual row gets rendered so do what you want with isSelected *****
+                                    title: <div className={node.isSelected ? 'selected' : ''}>{node.node.name}</div>
+                                }
+                            }}
                         />
-                    )}
+                    </div>
                 </Col>
 
                 <Col sm={6}>

@@ -7,7 +7,11 @@ exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _dynamic = _interopRequireDefault(require("next/dynamic"));
+
 var _reactstrap = require("reactstrap");
+
+require("react-sortable-tree/style.css");
 
 var _resolve = _interopRequireDefault(require("./resolve"));
 
@@ -15,9 +19,7 @@ var _Form = _interopRequireDefault(require("./Form"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
@@ -36,6 +38,16 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var SortableTree = (0, _dynamic["default"])(Promise.resolve().then(function () {
+  return _interopRequireWildcard(require("react-sortable-tree"));
+}), {
+  ssr: false
+});
 
 var Build = function Build(_ref) {
   var elements = _ref.elements,
@@ -99,11 +111,28 @@ var _default = function _default() {
     onClick: add.bind(null, "select")
   }, "Select"))), _react["default"].createElement(_reactstrap.Row, null, _react["default"].createElement(_reactstrap.Col, {
     sm: 6
-  }, _react["default"].createElement("h1", null, "Items"), elements[current] && _react["default"].createElement(Build, {
-    elements: elements,
-    setElements: setElements,
-    current: current
-  })), _react["default"].createElement(_reactstrap.Col, {
+  }, _react["default"].createElement("div", {
+    style: {
+      height: 400
+    }
+  }, _react["default"].createElement(SortableTree, {
+    treeData: elements,
+    onChange: function onChange(treeData) {
+      return setElements(treeData);
+    },
+    generateNodeProps: function generateNodeProps(node) {
+      return {
+        id: node.node.id,
+        onClick: function onClick(e) {
+          return handleNodeClick(node, e);
+        },
+        // **** This is where the actual row gets rendered so do what you want with isSelected *****
+        title: _react["default"].createElement("div", {
+          className: node.isSelected ? 'selected' : ''
+        }, node.node.name)
+      };
+    }
+  }))), _react["default"].createElement(_reactstrap.Col, {
     sm: 6
   }, _react["default"].createElement("h1", null, "Preview"), _react["default"].createElement(_Form["default"], {
     elements: elements,

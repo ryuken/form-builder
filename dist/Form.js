@@ -39,10 +39,10 @@ var MyForm = function MyForm(props) {
     if (props.button.color) buttonProps.color = props.button.color;else buttonProps.color = "primary";
   }
 
-  return _react["default"].createElement("form", {
+  return /*#__PURE__*/_react["default"].createElement("form", {
     onSubmit: handleSubmit
   }, props.elements.map(function (el) {
-    return _react["default"].createElement(_FormElement["default"], {
+    return /*#__PURE__*/_react["default"].createElement(_FormElement["default"], {
       key: el.name,
       id: el.name,
       attr: el.name,
@@ -53,7 +53,7 @@ var MyForm = function MyForm(props) {
       errors: errors,
       labelStyle: props.labelStyle
     });
-  }), _react["default"].createElement(_reactstrap.Button, buttonProps, props.button && props.button.label || "Save"));
+  }), /*#__PURE__*/_react["default"].createElement(_reactstrap.Button, buttonProps, props.button && props.button.label || "Save"));
 };
 
 var form = (0, _formik.withFormik)({

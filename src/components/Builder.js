@@ -59,7 +59,7 @@ export default () => {
             type,
             value: "",
             id: "",
-            name: "",
+            name: "test",
             label: "",
             placeholder: ""
         }]
@@ -70,6 +70,10 @@ export default () => {
 
     const save = (data) => {
         console.log(data)
+    }
+
+    const handleNodeClick = (node, e) => {
+        console.log(node)
     }
 
     return (

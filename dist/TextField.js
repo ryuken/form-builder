@@ -37,10 +37,10 @@ var _default = function _default(_ref) {
     feedback.data = errors[id];
   }
 
-  return _react["default"].createElement(_reactstrap.FormGroup, null, _react["default"].createElement(_reactstrap.Label, {
+  return /*#__PURE__*/_react["default"].createElement(_reactstrap.FormGroup, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.Label, {
     style: labelStyle,
     "for": name
-  }, label), _react["default"].createElement(_reactstrap.Input, {
+  }, label), /*#__PURE__*/_react["default"].createElement(_reactstrap.Input, {
     type: type,
     id: id,
     name: name,
@@ -49,7 +49,7 @@ var _default = function _default(_ref) {
     onChange: onChange,
     value: value,
     invalid: feedback ? feedback.invalid : null
-  }), feedback.invalid && _react["default"].createElement(_reactstrap.FormFeedback, null, feedback.data[0]), help && _react["default"].createElement(_reactstrap.FormText, null, help));
+  }), feedback.invalid && /*#__PURE__*/_react["default"].createElement(_reactstrap.FormFeedback, null, feedback.data[0]), help && /*#__PURE__*/_react["default"].createElement(_reactstrap.FormText, null, help));
 };
 
 exports["default"] = _default;
@@ -60,27 +60,27 @@ var TextFieldBuilder = function TextFieldBuilder(_ref2) {
       label = _ref2.label,
       placeholder = _ref2.placeholder,
       onChange = _ref2.onChange;
-  return _react["default"].createElement(_reactstrap.Container, null, _react["default"].createElement(_reactstrap.FormGroup, null, _react["default"].createElement(_reactstrap.Label, {
+  return /*#__PURE__*/_react["default"].createElement(_reactstrap.Container, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.FormGroup, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.Label, {
     "for": "id"
-  }, "ID"), _react["default"].createElement(_reactstrap.Input, {
+  }, "ID"), /*#__PURE__*/_react["default"].createElement(_reactstrap.Input, {
     name: "id",
     onChange: onChange,
     value: id
-  })), _react["default"].createElement(_reactstrap.FormGroup, null, _react["default"].createElement(_reactstrap.Label, {
+  })), /*#__PURE__*/_react["default"].createElement(_reactstrap.FormGroup, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.Label, {
     "for": "name"
-  }, "Name"), _react["default"].createElement(_reactstrap.Input, {
+  }, "Name"), /*#__PURE__*/_react["default"].createElement(_reactstrap.Input, {
     name: "name",
     onChange: onChange,
     value: name
-  })), _react["default"].createElement(_reactstrap.FormGroup, null, _react["default"].createElement(_reactstrap.Label, {
+  })), /*#__PURE__*/_react["default"].createElement(_reactstrap.FormGroup, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.Label, {
     "for": "label"
-  }, "Label"), _react["default"].createElement(_reactstrap.Input, {
+  }, "Label"), /*#__PURE__*/_react["default"].createElement(_reactstrap.Input, {
     name: "label",
     onChange: onChange,
     value: label
-  })), _react["default"].createElement(_reactstrap.FormGroup, null, _react["default"].createElement(_reactstrap.Label, {
+  })), /*#__PURE__*/_react["default"].createElement(_reactstrap.FormGroup, null, /*#__PURE__*/_react["default"].createElement(_reactstrap.Label, {
     "for": "placeholder"
-  }, "Placeholder"), _react["default"].createElement(_reactstrap.Input, {
+  }, "Placeholder"), /*#__PURE__*/_react["default"].createElement(_reactstrap.Input, {
     name: "placeholder",
     onChange: onChange,
     value: placeholder

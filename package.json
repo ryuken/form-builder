@@ -13,22 +13,22 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
-    "formik": "^2.0.8",
-    "lodash": "^4.17.15",
-    "node-sass": "^4.13.0",
+    "formik": "^2.2.5",
+    "lodash": "^4.17.20",
+    "node-sass": "^5.0.0",
     "prop-types": "^15.7.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-sortable-tree": "^2.7.1",
-    "reactstrap": "^8.2.0",
-    "validatorjs": "^3.18.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-sortable-tree": "^2.8.0",
+    "reactstrap": "^8.7.1",
+    "validatorjs": "^3.21.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.5",
-    "@babel/core": "^7.7.5",
-    "@babel/preset-env": "^7.7.6",
-    "@babel/preset-react": "^7.7.4",
-    "bootstrap": "^4.4.1",
-    "next": "^9.1.6"
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.8",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "bootstrap": "^4.5.3",
+    "next": "^10.0.3"
   }
 }
